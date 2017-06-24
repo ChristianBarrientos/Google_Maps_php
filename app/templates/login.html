@@ -1,0 +1,22 @@
+<div id="login">
+    
+ <form method="post" action="index.php?action=Ingreso::verificar_usuario">
+    <h3>Ingrese Sus Datos</h3>
+    <!-- START BLOCK : error_ -->
+    <div class="alert alert-danger">
+        <span>Los datos no concuerdan con un usuario registrado en el sistema.</span>
+    </div>
+    <!-- END BLOCK : error_ -->
+    <br>
+    <div class="form-group">
+        <label for="usuario">Usuario</label>
+        <input name="usuario" type="text" class="form-control"  placeholder="Nombre de Usuario" required>
+    </div>
+    <div class="boton_centro">
+       <button type="submit" class="btn btn-primary">Entrar</button>
+    </div>
+    <br><br>           
+</form>
+
+</div>
+

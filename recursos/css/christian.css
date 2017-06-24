@@ -1,0 +1,76 @@
+body{
+	display: inline-block;
+	background: #FFFFFF;
+}
+
+
+
+
+#map {
+      width: 100%;
+      height: 694px;
+    }
+
+
+div[id*="bloque_"] {
+	display: inline-block;
+ 	position: absolute;
+	
+	width: 45%;
+	height: auto;
+	top: 0px;
+	
+ }
+
+div#bloque_opciones{
+	left: 50%;
+	height: 30%;
+}
+
+div#bloque_opciones form >label {
+ 	
+ 	display: inline-block;
+ 	color: #FFFFFF;
+ 	font-size: 2em;
+ 	padding: 5px;
+ }
+
+ form + label{
+ 	border:1px solid red;
+ }
+
+ div#bloque_opciones form div.js_a_php {
+ 	border:1px solid black;
+ 	display: none;
+ }
+
+
+ input[type="submit"],
+ input[type="button"] {
+	font-size: 1.5em;
+	display: inline-block;
+
+	
+ }
+
+  input[type="textbox"]{
+  	border:1px solid red;
+  	margin: 10px;
+  	font-size: 1.3em;
+  }
+
+ div#login{
+ 	border:2px solid black;
+ 	position: relative;
+ 	left: 450px;
+ 	top: 200px;
+ 	background: #FFFFFF;
+ 	width: 350px;
+ 	height: 200px;
+ }
+
+ div#login form{
+ 	margin: 20px;
+ }
+
+

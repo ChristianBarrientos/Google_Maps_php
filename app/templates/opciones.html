@@ -1,0 +1,61 @@
+<div id="bloque_opciones">
+        <h2>Agregar Punto</h2>
+
+         <form method="post" action="index.php?action=Mapa::agregar_punto">
+            
+            <input  name="punto_" type="checkbox" value="punto_" onclick="habilita_seleccion_mapa(this)">Seleccionar en mapa 
+            <br>    
+            <input id="Punto" type="textbox" size="38" maxlength="80" value="" placeholder="Ejemplo: Pais, Provincia, Localidad, Direccion" />
+            <!--<label for="Origen">Ingrese Pais</label>
+            <br>
+            <input id="Pais" name="Pais" type="textbox" size="38" maxlength="80" value="" placeholder="Argentina" />
+            <label for="Destino">Ingrese Provincia</label>
+            <input id="Provincia" name="Provincia" type="textbox" size="38" maxlength="80" value="" placeholder="Catamarca"  /> 
+            <label for="Destino">Ingrese Localidad</label>
+            <input id="Localidad" name="Localidad" type="textbox" size="38" maxlength="80" value="" placeholder="San Fernando del Valle de Catamarca"  /> 
+            -->
+                <div class="js_a_php">
+                    <input id="p0_lat" name="p0_lat" type="hidden" />
+                    <input id="p0_lng" name="p0_lng" type="hidden" />
+                    <input id="p0_geocoding_origen" name="p0_geocoding_origen" type="hidden" />
+                </div>
+             <br><br><br>
+            <input type="button" value="Dibujar Punto" onclick="punto_obten_direccion()">
+            <input type="submit" value="Guardar Punto">
+            <input type="button" value="Borra Punto" onclick="punto_borrar()">
+        </form>
+        
+
+        <!--<br><br><br>
+        <input type="button" value="Localizar" onclick="localizar()">
+        <br><br><br>-->
+        <br>
+        <h2>Agregar Ruta</h2>
+       
+        <form method="post" action="index.php?action=Mapa::agregar_ruta">
+            <input  name="ruta_origen" type="checkbox" value="ruta_origen" onclick="habilita_seleccion_mapa(this)">Seleccionar en mapa 
+            <br> 
+            <input id="Origen" name="Origen" type="textbox" size="38" maxlength="80" value="" placeholder="Ejemplo: Pais, Provincia, Localidad, Direccion" />
+            <div class="js_a_php">
+                <input id="p1_lat" name="p1_lat" type="hidden" />
+                <input id="p1_lng" name="p1_lng" type="hidden" />
+                <input id="geocoding_origen" name="geocoding_origen" type="hidden" />
+            </div>
+            
+           
+           <br>
+             <input  name="ruta_destino" type="checkbox" value="ruta_destino" onclick="habilita_seleccion_mapa(this)">Seleccionar en mapa
+            <br> 
+            <input id="Destino" name="Destino" type="textbox" size="38" maxlength="80" value="" placeholder="Ejemplo: Pais, Provincia, Localidad, Direccion"  />
+            <div class="js_a_php">
+                <input id="p2_lat" name="p2_lat" type="hidden" />
+                <input id="p2_lng" name="p2_lng" type="hidden" /> 
+                <input id="geocoding_destino" name="geocoding_destino" type="hidden" />
+            </div>
+            
+            <br><br><br>
+            <input type="button" value="Dibujar Ruta" onclick="comprobar()">
+            <input type="submit" value="Guardar Ruta">
+            <input type="button" value="Borra Ruta" onclick="borrarruta()">
+        </form>
+       
