@@ -29,7 +29,8 @@ url_key = '&key=AIzaSyBtN8tuxmc0L7v_AzrfJj1znoH7dMvsEkQ';
 var event_click_marker;
 var datos_geocoding;
 //Cargar Mapa
-
+//
+var markers = [];
 
 
 //window.onload = function (){
@@ -52,6 +53,11 @@ function inicio_map(){
         });
   };
  */
+
+  //infoWindow = new google.maps.InfoWindow();
+   
+
+
 
 
 }
@@ -120,13 +126,19 @@ function geocoder(punto,tipo = geocodificacion,funcion,input = false){
 
 
 function habilita_seleccion_mapa(input){
-  
+   
   if (input.checked) {
       event_click_marker = map.addListener('click', function(event) {
         
           if (!(typeof marker == "undefined")) {
-            alert(marker.getdraggable);
-            punto_borrar();
+            /*alert("click");
+            var okok = marker.getPosition();
+            alert(okok.lng());
+            alert(okok.lat());
+            alert(marker.getdraggable);*/
+            punto_borrar(marker);
+            habilita_seleccion_mapa(input);
+            alert(typeof marker);
           }
           
           else{
@@ -134,12 +146,31 @@ function habilita_seleccion_mapa(input){
             agregar_Marker(event.latLng);
 
             if (input.value == "punto_") {
-              var id_div_autores = document.getElementById("Punto");
-              id_div_autores.disabled = true;
+              var id_div = document.getElementById("Punto");
+              id_div.disabled = true;
                
                 //id_div_autores.setAttribute('hid','autor_nombre'.concat(numero_autores));
                 //PuntoLatlng = new google.maps.LatLng(latitud,longitud);
-              geocoder(event.latLng,'inversa',2,id_div_autores);
+              
+              /*if (typeof marker == "undefined") {
+                  alert("aca");
+                  var markerLatLng = marker.getPosition();
+                  markerLatLng.lat();
+                  markerLatLng.lng();
+                  //alert(event.latLng);
+                  //alert(markerLatLng);
+                  geocoder(markerLatLng,'inversa',2,id_div);
+              }
+              else{*/
+
+                 geocoder(event.latLng,'inversa',2,id_div);
+              //}
+              /*var markerLatLng = marker.getPosition();
+              markerLatLng.lat();
+              markerLatLng.lng();*/
+              //alert(event.latLng);
+              //alert(markerLatLng);
+              
                 
             }
             if (input.value == "ruta_origen") {
@@ -184,11 +215,13 @@ function escribir_input(input,direccion){
   input.value = direccion;
 }
 
-function punto_borrar(){
+function punto_borrar(marker){
 
   marker.setMap(null);
- 
+  marker;
 }
+
+
 
 
 
