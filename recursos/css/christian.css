@@ -30,7 +30,7 @@ div#bloque_opciones{
 div#bloque_opciones form >label {
  	
  	display: inline-block;
- 	color: #FFFFFF;
+ 	color: #100F18;
  	font-size: 2em;
  	padding: 5px;
  }
@@ -57,6 +57,7 @@ div#bloque_opciones form >label {
   	border:1px solid red;
   	margin: 10px;
   	font-size: 1.3em;
+  	width: 100%;
   }
 
  div#login{
@@ -73,4 +74,9 @@ div#bloque_opciones form >label {
  	margin: 20px;
  }
 
+
+input[type="textbox"]:disabled {
+		 background: #B3B0B0; 
+
+	}
 

@@ -74,15 +74,17 @@ function inicio_map(){
 function punto_obten_direccion(){
   
   var punto = document.getElementById('Punto').value;
-  geocoder(punto,'inversa',1);
+  geocoder(punto,'geocodificacion',1);
 
 }
 
-function geocoder(punto,tipo = geocodificacion,funcion,input = false){
+function geocoder(punto,tipo = 'geocodificacion',funcion,input = false){
 //'latLng': latlng si lo que queremos ejecutar en geocodificación inversa
+
   var geocoder = new google.maps.Geocoder();
   // Función completa de Geocoding
   if(tipo == "geocodificacion"){
+    
       geocoder.geocode({'address': punto}, 
         function (results, status) {
           if (status == google.maps.GeocoderStatus.OK) {
@@ -134,6 +136,7 @@ function geocoder(punto,tipo = geocodificacion,funcion,input = false){
 
 function habilita_seleccion_mapa(){
   id_div = document.getElementById("Punto");
+  id_boton_dibujar = document.getElementById("boton_dibujar_punto");
   for (i=0;i<document.puntos.radio_button.length;i++){ 
       if (document.puntos.radio_button.checked) 
         break; 
@@ -144,6 +147,8 @@ function habilita_seleccion_mapa(){
       
       id_div.disabled = true; 
       id_div.value = "";
+      id_boton_dibujar.disabled = true;
+      
     event_click_marker = map.addListener('click', function(event) {
       
       if (input.value == "punto_") {
@@ -164,7 +169,8 @@ function habilita_seleccion_mapa(){
   else{
     //google.maps.event.clearInstanceListeners(map);
     id_div.disabled = false;
-    
+    id_boton_dibujar.disabled = false;
+     
     google.maps.event.removeListener(event_click_marker);
   }
   
@@ -199,6 +205,7 @@ function agregar_Marker(location,centrar = false){
         }
       })(marker));
 
+  markers.push(marker);
   /*alert(marker.getPosition());
   marker.addListener('click', function() {
           

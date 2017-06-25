@@ -6,7 +6,10 @@
             <input  id="radio_button" name="punto_" type="radio" value="punto_" onclick="habilita_seleccion_mapa()">Seleccionar en mapa 
             <input  checked id="radio_button" name="punto_" type="radio" value="punto_direccion" onclick="habilita_seleccion_mapa()">Ingresar direccion
             <br>    
-            <input id="Punto" type="textbox" size="38" maxlength="80"  placeholder="Ejemplo: Pais, Provincia, Localidad, Direccion" />
+            <label for="Punto">Direccion</label><br>
+            <input required id="Punto" type="textbox" placeholder="Ejemplo: Pais, Provincia, Localidad, Direccion" /><br>
+            <label for="Titulo">Titulo</label><br>
+            <input required id="Titulo" type="textbox" placeholder="Ingrese un Titulo" />
             <!--<label for="Origen">Ingrese Pais</label>
             <br>
             <input id="Pais" name="Pais" type="textbox" size="38" maxlength="80" value="" placeholder="Argentina" />
@@ -16,12 +19,14 @@
             <input id="Localidad" name="Localidad" type="textbox" size="38" maxlength="80" value="" placeholder="San Fernando del Valle de Catamarca"  /> 
             -->
                 <div class="js_a_php">
+                    <input id="p0_id" name="p0_id" type="hidden" />
+                    <input id="p0_titulo" name="p0_titulo" type="hidden" />
                     <input id="p0_lat" name="p0_lat" type="hidden" />
                     <input id="p0_lng" name="p0_lng" type="hidden" />
-                    <input id="p0_geocoding_origen" name="p0_geocoding_origen" type="hidden" />
+                    <input id="p0_geocoding" name="p0_geocoding" type="hidden" />
                 </div>
              <br><br><br>
-            <input type="button" value="Dibujar Punto" onclick="punto_obten_direccion()">
+            <input readonly id="boton_dibujar_punto" type="button" value="Dibujar Punto" onclick="punto_obten_direccion()">
             <input type="submit" value="Guardar Punto">
             <input type="button" value="Borra Punto" onclick="punto_borrar()">
         </form>
