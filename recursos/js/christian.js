@@ -33,6 +33,7 @@ var datos_geocoding;
 var markers = [];
 
 
+
 //window.onload = function (){
 
 
@@ -145,8 +146,8 @@ function habilita_seleccion_mapa(input){
           }*/
           
           //else{
-
-            agregar_Marker(event.latLng);
+            
+            
 
             if (input.value == "punto_") {
               var id_div = document.getElementById("Punto");
@@ -167,6 +168,7 @@ function habilita_seleccion_mapa(input){
               else{*/
 
                  geocoder(event.latLng,'inversa',2,id_div);
+                 agregar_Marker(event.latLng, id_div);
               //}
               /*var markerLatLng = marker.getPosition();
               markerLatLng.lat();
@@ -199,8 +201,9 @@ function habilita_seleccion_mapa(input){
 }
 
 function agregar_Marker(location,centrar = false){
- 
+  
   marker = new google.maps.Marker({
+       
         position: location,
         map: map,
         animation:google.maps.Animation.DROP,
@@ -210,7 +213,40 @@ function agregar_Marker(location,centrar = false){
   if(centrar == true){
     map.setCenter(marker.getPosition());
   }
-  markers.push(marker);
+
+  google.maps.event.addListener(marker, 'click', (function(marker) {
+        return function() {
+          alert(marker.getPosition());
+        }
+      })(marker));
+  google.maps.event.addListener(marker, 'dragend', (function(marker) {
+        return function() {
+          alert(marker.getPosition());
+        }
+      })(marker));
+
+  /*alert(marker.getPosition());
+  marker.addListener('click', function() {
+          
+          alert(marker.getPosition());
+        });
+  /*markers.push(marker);
+
+  for (var i = 0; i < markers.length; i++) {
+    markers[i].addListener('click', function() {
+          
+          alert(markers[i].getPosition());
+        });
+  };
+  var tam = markers.length - 1;
+  google.maps.event.addListener(markers[tam], "click", function(){
+                               //click_mark(marker);
+                               alert(markers[0].getPosition());
+                               alert(markers[1].getPosition());
+                            });
+  google.maps.event.addListener(markers[tam], 'dragend', function(event) { 
+                                       alert(marker.getPosition());
+                                    } );*/
 
 }
 
@@ -231,7 +267,20 @@ function mostrar_marcadores() {
     }
 }
 
+function click_mark(mark){
+  alert(mark.getPosition());
+  map.setCenter(mark.getPosition());
+  alert("ok");
+}
 
+
+(function () {
+   marker.addListener('click', function() {
+          map.setZoom(8);
+          map.setCenter(marker.getPosition());
+        });
+   alert("siii");
+});
 
 
 
