@@ -170,7 +170,7 @@ function habilita_seleccion_mapa(){
     //google.maps.event.clearInstanceListeners(map);
     id_div.disabled = false;
     id_boton_dibujar.disabled = false;
-     
+
     google.maps.event.removeListener(event_click_marker);
   }
   
@@ -191,21 +191,27 @@ function agregar_Marker(location,centrar = false){
   if(centrar == true){
     map.setCenter(marker.getPosition());
   }
-
+  //agregar market nuevo a la matriz
+  markers.push(marker);
+  
   google.maps.event.addListener(marker, 'click', (function(marker) {
         return function() {
           
           geocoder(marker.getPosition(),'inversa',2,id_div);
+          escribir_input_hidden(marker,markers.length);
           
         }
       })(marker));
   google.maps.event.addListener(marker, 'dragend', (function(marker) {
         return function() {
           geocoder(marker.getPosition(),'inversa',2,id_div);
+          escribir_input_hidden(marker,markers.length);
         }
       })(marker));
 
-  markers.push(marker);
+   escribir_input_hidden(marker,markers.length);
+  
+  
   /*alert(marker.getPosition());
   marker.addListener('click', function() {
           
@@ -232,8 +238,20 @@ function agregar_Marker(location,centrar = false){
 }
 
 function escribir_input(input,direccion){
-  
+  hidden_input = document.getElementById("p0_geocoding");
   input.value = direccion;
+  hidden_input.value = direccion;
+}
+
+function escribir_input_hidden(mark, id){
+  hidden_p0_id = document.getElementById("p0_id");
+  hidden_p0_lat = document.getElementById("p0_lat");
+  hidden_p0_lng = document.getElementById("p0_lng");
+  hidden_p0_id.value = id;
+  var markerLatLng = mark.getPosition();
+  hidden_p0_lat.value = markerLatLng.lat();
+  hidden_p0_lng.value = markerLatLng.lng();
+
 }
 
 function punto_borrar(marker){

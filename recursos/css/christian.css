@@ -76,7 +76,11 @@ div#bloque_opciones form >label {
 
 
 input[type="textbox"]:disabled {
-		 background: #B3B0B0; 
+		background: #B3B0B0; 
 
 	}
 
+input[type="button"]:disabled {
+		background: #B3B0B0; 
+
+	}
