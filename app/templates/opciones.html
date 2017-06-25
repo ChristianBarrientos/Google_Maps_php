@@ -1,7 +1,7 @@
 <div id="bloque_opciones">
         <h2>Agregar Punto</h2>
 
-         <form name="puntos" method="post" action="index.php?action=Mapa::agregar_punto">
+         <form name="puntos" method="post" action="index.php?action=Mapa::cargar_punto">
             
             <input  id="radio_button" name="punto_" type="radio" value="punto_" onclick="habilita_seleccion_mapa()">Seleccionar en mapa 
             <input  checked id="radio_button" name="punto_" type="radio" value="punto_direccion" onclick="habilita_seleccion_mapa()">Ingresar direccion
@@ -31,6 +31,21 @@
             <input type="button" value="Borra Punto" onclick="punto_borrar()">
         </form>
         
+        <!-- START BLOCK : insert_ok -->
+        <div class="alert alert-success">
+            <h2>Guardado con Exito!</h2>
+        </div>
+            
+        <!-- END BLOCK : insert_ok -->
+
+        <!-- START BLOCK : insert_ok_no -->
+        <div class="alert alert-danger">
+            <h2>No se pudo guardar!</h2>
+        </div>
+            
+        <!-- END BLOCK : insert_ok_no -->
+
+
 
         <!--<br><br><br>
         <input type="button" value="Localizar" onclick="localizar()">

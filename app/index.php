@@ -89,10 +89,15 @@ if ($config["motordb"]=="MYSQL"){
 
 if (isset($_SESSION["nombre"])){
 
-	$tpl->assign("contenido",Ingreso_Controller::menu());
-	$tpl->newBlock("bloque_mapa");
-	$tpl->printToScreen();
-	
+	if($html == null){
+		$tpl->assign("contenido",Ingreso_Controller::menu());
+		$tpl->newBlock("bloque_mapa");
+		$tpl->printToScreen();
+	}
+	else{
+		$tpl->assign("contenido",$html);
+    	$tpl->printToScreen();
+	}
 }
 else{
 	$tpl->assign("contenido",$html);
