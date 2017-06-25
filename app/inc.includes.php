@@ -12,6 +12,9 @@ include("/controller/mapa.controller.php");
 
 //MODELOS
 include("model/usuario.model.php");
-include("model/market.model.php");
+include("model/zona.model.php");
 include("model/punto.model.php");
+include("model/market.model.php");
+
+
 ?>
