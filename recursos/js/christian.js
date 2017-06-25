@@ -33,6 +33,8 @@ var datos_geocoding;
 var markers = [];
 
 
+var id_div;
+
 
 //window.onload = function (){
 
@@ -116,6 +118,7 @@ function geocoder(punto,tipo = geocodificacion,funcion,input = false){
                       agregar_Marker(PuntoLatlng,true);
                       break;
                   case 2:
+                      
                       escribir_input(input,direccion);
                       break;    
                 }
@@ -150,7 +153,7 @@ function habilita_seleccion_mapa(input){
             
 
             if (input.value == "punto_") {
-              var id_div = document.getElementById("Punto");
+              id_div = document.getElementById("Punto");
               id_div.disabled = true;
                
                 //id_div_autores.setAttribute('hid','autor_nombre'.concat(numero_autores));
@@ -166,9 +169,10 @@ function habilita_seleccion_mapa(input){
                   geocoder(markerLatLng,'inversa',2,id_div);
               }
               else{*/
-
+                //alert(event.latLng);
+                 
+                 agregar_Marker(event.latLng);
                  geocoder(event.latLng,'inversa',2,id_div);
-                 agregar_Marker(event.latLng, id_div);
               //}
               /*var markerLatLng = marker.getPosition();
               markerLatLng.lat();
@@ -202,6 +206,7 @@ function habilita_seleccion_mapa(input){
 
 function agregar_Marker(location,centrar = false){
   
+  
   marker = new google.maps.Marker({
        
         position: location,
@@ -216,12 +221,14 @@ function agregar_Marker(location,centrar = false){
 
   google.maps.event.addListener(marker, 'click', (function(marker) {
         return function() {
-          alert(marker.getPosition());
+          
+          geocoder(marker.getPosition(),'inversa',2,id_div);
+          
         }
       })(marker));
   google.maps.event.addListener(marker, 'dragend', (function(marker) {
         return function() {
-          alert(marker.getPosition());
+          geocoder(marker.getPosition(),'inversa',2,id_div);
         }
       })(marker));
 
@@ -274,13 +281,13 @@ function click_mark(mark){
 }
 
 
-(function () {
+/*(function () {
    marker.addListener('click', function() {
           map.setZoom(8);
           map.setCenter(marker.getPosition());
         });
    alert("siii");
-});
+});*/
 
 
 
