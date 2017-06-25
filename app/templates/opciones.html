@@ -1,11 +1,12 @@
 <div id="bloque_opciones">
         <h2>Agregar Punto</h2>
 
-         <form method="post" action="index.php?action=Mapa::agregar_punto">
+         <form name="puntos" method="post" action="index.php?action=Mapa::agregar_punto">
             
-            <input  name="punto_" type="checkbox" value="punto_" onclick="habilita_seleccion_mapa(this)">Seleccionar en mapa 
+            <input  id="radio_button" name="punto_" type="radio" value="punto_" onclick="habilita_seleccion_mapa()">Seleccionar en mapa 
+            <input  checked id="radio_button" name="punto_" type="radio" value="punto_direccion" onclick="habilita_seleccion_mapa()">Ingresar direccion
             <br>    
-            <input id="Punto" type="textbox" size="38" maxlength="80" value="" placeholder="Ejemplo: Pais, Provincia, Localidad, Direccion" />
+            <input id="Punto" type="textbox" size="38" maxlength="80"  placeholder="Ejemplo: Pais, Provincia, Localidad, Direccion" />
             <!--<label for="Origen">Ingrese Pais</label>
             <br>
             <input id="Pais" name="Pais" type="textbox" size="38" maxlength="80" value="" placeholder="Argentina" />
@@ -28,7 +29,7 @@
 
         <!--<br><br><br>
         <input type="button" value="Localizar" onclick="localizar()">
-        <br><br><br>-->
+        <br><br><br>
         <br>
         <h2>Agregar Ruta</h2>
        
@@ -57,5 +58,5 @@
             <input type="button" value="Dibujar Ruta" onclick="comprobar()">
             <input type="submit" value="Guardar Ruta">
             <input type="button" value="Borra Ruta" onclick="borrarruta()">
-        </form>
+        </form>-->
        

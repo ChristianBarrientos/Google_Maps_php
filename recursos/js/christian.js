@@ -132,76 +132,43 @@ function geocoder(punto,tipo = geocodificacion,funcion,input = false){
 }
 
 
-function habilita_seleccion_mapa(input){
-   
-  if (input.checked) {
-      event_click_marker = map.addListener('click', function(event) {
-        
-          /*if (!(typeof marker == "undefined")) {
-            /*alert("click");
-            var okok = marker.getPosition();
-            alert(okok.lng());
-            alert(okok.lat());
-            alert(marker.getdraggable);
-            punto_borrar(marker);
-            habilita_seleccion_mapa(input);
-            alert(typeof marker);
-          }*/
+function habilita_seleccion_mapa(){
+  id_div = document.getElementById("Punto");
+  for (i=0;i<document.puntos.radio_button.length;i++){ 
+      if (document.puntos.radio_button.checked) 
+        break; 
+      }
+
+  input = document.puntos.radio_button;
+  if (input.value == "punto_") {
+      
+      id_div.disabled = true; 
+      id_div.value = "";
+    event_click_marker = map.addListener('click', function(event) {
+      
+      if (input.value == "punto_") {
           
-          //else{
-            
-            
+          agregar_Marker(event.latLng);
+          geocoder(event.latLng,'inversa',2,id_div);
+      }
+      if (input.value == "ruta_origen") {
+                      
+      }
+      if (input.value == "ruta_destino") {
+                  
+      }
 
-            if (input.value == "punto_") {
-              id_div = document.getElementById("Punto");
-              id_div.disabled = true;
-               
-                //id_div_autores.setAttribute('hid','autor_nombre'.concat(numero_autores));
-                //PuntoLatlng = new google.maps.LatLng(latitud,longitud);
-              
-              /*if (typeof marker == "undefined") {
-                  alert("aca");
-                  var markerLatLng = marker.getPosition();
-                  markerLatLng.lat();
-                  markerLatLng.lng();
-                  //alert(event.latLng);
-                  //alert(markerLatLng);
-                  geocoder(markerLatLng,'inversa',2,id_div);
-              }
-              else{*/
-                //alert(event.latLng);
-                 
-                 agregar_Marker(event.latLng);
-                 geocoder(event.latLng,'inversa',2,id_div);
-              //}
-              /*var markerLatLng = marker.getPosition();
-              markerLatLng.lat();
-              markerLatLng.lng();*/
-              //alert(event.latLng);
-              //alert(markerLatLng);
-              
-                
-            }
-            if (input.value == "ruta_origen") {
-                    
-            }
-
-            if (input.value == "ruta_destino") {
-              
-            }
-
-        //}
-         
-
-        });
+    });
     
   }
   else{
     //google.maps.event.clearInstanceListeners(map);
+    id_div.disabled = false;
     
     google.maps.event.removeListener(event_click_marker);
   }
   
+
 }
 
 function agregar_Marker(location,centrar = false){
