@@ -35,6 +35,7 @@ var markers = [];
 
 //window.onload = function (){
 
+
 function inicio_map(){
   //var myLatlng = {lat: -28.4595997, lng: -65.7825866};
   var myLatlng = new google.maps.LatLng(-28.4595997,-65.7825866);
@@ -45,6 +46,8 @@ function inicio_map(){
     disableDefaultUI: true,
     center: myLatlng
   });
+
+  
 
   /*if (true) {
      map.addListener('click', function(event) {
@@ -130,18 +133,18 @@ function habilita_seleccion_mapa(input){
   if (input.checked) {
       event_click_marker = map.addListener('click', function(event) {
         
-          if (!(typeof marker == "undefined")) {
+          /*if (!(typeof marker == "undefined")) {
             /*alert("click");
             var okok = marker.getPosition();
             alert(okok.lng());
             alert(okok.lat());
-            alert(marker.getdraggable);*/
+            alert(marker.getdraggable);
             punto_borrar(marker);
             habilita_seleccion_mapa(input);
             alert(typeof marker);
-          }
+          }*/
           
-          else{
+          //else{
 
             agregar_Marker(event.latLng);
 
@@ -181,7 +184,7 @@ function habilita_seleccion_mapa(input){
               
             }
 
-        }
+        //}
          
 
         });
@@ -197,16 +200,17 @@ function habilita_seleccion_mapa(input){
 
 function agregar_Marker(location,centrar = false){
  
- marker = new google.maps.Marker({
+  marker = new google.maps.Marker({
         position: location,
         map: map,
         animation:google.maps.Animation.DROP,
         draggable:true,
         title: 'Punto'
     });
- if(centrar == true){
+  if(centrar == true){
     map.setCenter(marker.getPosition());
- }
+  }
+  markers.push(marker);
 
 }
 
@@ -219,6 +223,12 @@ function punto_borrar(marker){
 
   marker.setMap(null);
   marker;
+}
+
+function mostrar_marcadores() {
+    for (var i = 0; i < markers.length; i++) {
+      markers[i].setMap(map);
+    }
 }
 
 
