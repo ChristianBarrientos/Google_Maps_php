@@ -63,9 +63,6 @@ function inicio_map(){
   //infoWindow = new google.maps.InfoWindow();
    
 
-
-
-
 }
 
 

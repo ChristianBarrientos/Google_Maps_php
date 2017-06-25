@@ -7,8 +7,8 @@ class Mapa_Controller{
 
         $tpl = new TemplatePower("templates/opciones.html");
         $tpl->prepare();
-        global $baseDatos;
 
+        global $baseDatos;
         $p0_lat = $baseDatos->real_escape_string($_POST["p0_lat"]);
         $p0_lng = $baseDatos->real_escape_string($_POST["p0_lng"]);
         $p0_geocoding = $baseDatos->real_escape_string($_POST["p0_geocoding"]);
@@ -16,14 +16,11 @@ class Mapa_Controller{
         
         $zonas = $this->obtener_zonas($p0_geocoding);
         
-
-
-        //instanciar zona
         try{
             $zona = new mp_zona($zonas['Pais'], $zonas['Provincia'], $zonas['Localidad'], $zonas['Direccion']);
             $zona::insert_zona_bd($zona);
 
-            //throw new Exception("Error",0);
+            
             $punto = new mp_punto($p0_lat, $p0_lng, $zona);
             $punto::insert_punto_bd($punto);
             //throw new Exception("Error",0);
@@ -34,22 +31,6 @@ class Mapa_Controller{
             echo "Al cargar a BD. Detalle : ".$e;
          }
 
-        /*$zona = new mp_zona($zonas['Pais'], $zona['Provincia'], $zona['Localidad'], $zona['Direccion']);
-        $zona::insert_zona_bd($zona);
-        //instanciar punto
-        $punto = new mp_punto($p0_lat, $p0_lng, $zona);
-        $punto::insert_zona_bd($zona);
-        $punto::insert_punto_bd($punto);
-        //$punto_ok = $punto::insert_punto_bd($punto);
-        //$id_punto = $punto::obtener_ultimo_insert();
-        //instanciar market
-        $mark = new mp_market($titulo,$punto);
-        $carga_market = $mark::insert_market_bd($mark);*/
-        echo $zona->getOk_bd();
-        echo "**";
-        echo $punto->getOk_bd();
-        echo "**";
-        echo $mark->getOk_bd();
         if ($zona->getOk_bd() && $punto->getOk_bd() && $mark->getOk_bd() ) {
 
             $tpl->newBlock("insert_ok");
@@ -93,6 +74,18 @@ class Mapa_Controller{
                                    'Direccion' => $direccion,
                                  );
         return $zona;
+
+    }
+
+
+    function markets_de_bd(){
+        
+        $tpl = new TemplatePower("templates/markets.html");
+        $tpl->prepare();
+        $tpl->gotoBlock("_ROOT");
+
+        
+        return $tpl->getOutputContent();
 
     }
 

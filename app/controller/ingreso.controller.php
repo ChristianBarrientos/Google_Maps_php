@@ -47,10 +47,15 @@ class Ingreso_Controller{
 
 	
 	function menu (){
-        
+        if (!($_SESSION['nombre'])) {
+    		header('Location: index.php');
+  		}
+
 		$tpl = new TemplatePower("templates/opciones.html");
 		$tpl->prepare();
-		return $tpl->getOutputContent();
+		$tp1 = Mapa_Controller::markets_de_bd();
+		$tpl = $tpl->getOutputContent();
+		return $tp1.$tpl;
 
 	}
 

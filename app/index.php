@@ -60,7 +60,7 @@ if ($config["motordb"]=="MYSQL"){
 
     $tpl = new TemplatePower("templates/index.html");
 	$tpl->prepare();
-	
+	$tpl->gotoBlock("_ROOT");
 //===========================================================================================================
 // LEVANTA TEMPLATE	|
 //-------------------		
@@ -89,15 +89,21 @@ if ($config["motordb"]=="MYSQL"){
 
 if (isset($_SESSION["nombre"])){
 
+	
+	
+
 	if($html == null){
 		$tpl->assign("contenido",Ingreso_Controller::menu());
-		$tpl->newBlock("bloque_mapa");
-		$tpl->printToScreen();
+		//$tpl->assign("markets",Mapa_Controller::markets_de_bd());
+		//$tpl->newBlock("bloque_mapa");
+		
 	}
 	else{
 		$tpl->assign("contenido",$html);
-    	$tpl->printToScreen();
+    	
 	}
+
+	$tpl->printToScreen();
 }
 else{
 	$tpl->assign("contenido",$html);
