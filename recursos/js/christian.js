@@ -50,6 +50,13 @@ function inicio_map(){
     center: myLatlng
   });
 
+
+  for (var i = 0; i < Things.length; i++) {
+    Things[i]
+  };
+    PuntoLatlng = new google.maps.LatLng(latitud,longitud);
+    agregar_Marker(PuntoLatlng,true);
+
   
 
   /*if (true) {
@@ -113,6 +120,7 @@ function geocoder(punto,tipo = 'geocodificacion',funcion,input = false){
               var direccion = results[0].formatted_address;
               switch(funcion) {
                   case 1:
+
                       PuntoLatlng = new google.maps.LatLng(latitud,longitud);
                       agregar_Marker(PuntoLatlng,true);
                       break;
@@ -174,7 +182,7 @@ function habilita_seleccion_mapa(){
 
 }
 
-function agregar_Marker(location,centrar = false){
+function agregar_Marker(location,centrar = false,titulo = punto){
   
   
   marker = new google.maps.Marker({
@@ -183,7 +191,7 @@ function agregar_Marker(location,centrar = false){
         map: map,
         animation:google.maps.Animation.DROP,
         draggable:true,
-        title: 'Punto'
+        title: titulo
     });
   if(centrar == true){
     map.setCenter(marker.getPosition());

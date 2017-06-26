@@ -83,8 +83,8 @@ class Mapa_Controller{
         $tpl = new TemplatePower("templates/markets.html");
         $tpl->prepare();
         $tpl->gotoBlock("_ROOT");
-
         
+        $tpl->newBlock("php_a_js");
         return $tpl->getOutputContent();
 
     }

@@ -18,9 +18,9 @@ class Ingreso_Controller{
 		$usuario = new usuario($usuario);
 		//llamado al modelo. 
 		
-		$_user_ok = $usuario -> verificar_user($usuario->getNomUs());
+		
 	
-		if($_user_ok){
+		if($usuario -> verificar_user()){
 	
 			$this->iniciar_session($usuario);
 
@@ -42,6 +42,7 @@ class Ingreso_Controller{
 	function iniciar_session($usuario){
 
 		$_SESSION["nombre"] = $usuario->getNomUs();
+		$_SESSION["id_usuario"] = $usuario->getId_user();
 
 	}
 
